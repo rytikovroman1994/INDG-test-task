@@ -1,0 +1,36 @@
+version: '3'
+services:
+  selenoid:
+    image: "aerokube/selenoid:latest-release"
+    network_mode: bridge
+    ports:
+        - "4444:4444"
+    volumes:
+        - ./:/etc/selenoid/
+        - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+        - LIMIT=10
+    command: "-limit 20 \ 
+            -service-startup-timeout 120s \
+            -session-attempt-timeout 120s \ 
+            -session-delete-timeout 120s \
+            -timeout 120s"
+
+  selenoid-ui:
+    image: "aerokube/selenoid-ui"
+    network_mode: bridge
+    depends_on:
+        - selenoid
+    ports:
+        - "8083:8080"
+    command: ["--selenoid-uri", "http://192.168.1.8:4444"]
+
+  test:
+    build: 
+        context: ./
+        dockerfile: Dockerfile
+    depends_on:
+        - selenoid
+        - selenoid-ui
+    env_file: 
+        - .env
