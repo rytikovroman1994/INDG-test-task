@@ -1,0 +1,1 @@
+export const basicStructure = (testId: string) => `body [data-test-component=${testId}]`;
