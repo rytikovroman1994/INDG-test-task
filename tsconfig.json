@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "CommonJS",
+        "strict": true,
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "types": [
+            "node",
+            "webdriverio/async",
+            "@wdio/mocha-framework",
+            "expect-webdriverio"
+        ],
+    },
+    "include": [
+        "./config-files/*.ts",
+        "./test/**/**/*.ts",
+        "./types/**/*.ts",
+    ],
+    "exclude": [
+        "./node_modules"
+    ]
+}
