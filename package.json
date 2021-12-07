@@ -11,7 +11,8 @@
         "@wdio/selenium-standalone-service": "^7.16.6",
         "@wdio/spec-reporter": "^7.16.9",
         "ts-node": "^10.4.0",
-        "typescript": "^4.5.2"
+        "typescript": "^4.5.2",
+        "wdio-image-comparison-service": "^3.1.0"
     },
     "scripts": {
         "test": "wdio run ./config-files/wdio.main.conf.ts",
@@ -19,6 +20,7 @@
     },
     "dependencies": {
         "@types/chai": "^4.2.22",
+        "allure-commandline": "^2.13.8",
         "chai": "^4.3.4",
         "dotenv": "^10.0.0"
     }
