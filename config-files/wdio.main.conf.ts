@@ -5,6 +5,9 @@ import { config as browserstack } from './wdio.browserstack.conf';
 import AddTextInField from '../test/helpers/AddTextInField';
 import AllureStep from '../test/helpers/AllureStep';
 import ClickElement from '../test/helpers/ClickElement';
+import CheckText from '../test/helpers/CheckText';
+import GetKeyCode from '../test/helpers/GetKeyCode';
+import { join } from 'path';
 
 let setting: any;
 switch (process.env.MODE) {
@@ -49,6 +52,21 @@ export const config: WebdriverIO.Config = {
     //
     // Default request retries count
     connectionRetryCount: 3,
+    services: [
+        ['image-comparison',
+            // The options
+            {
+                // Some options, see the docs for more
+                baselineFolder: join(process.cwd(), './screenshots/tests/sauceLabsBaseline/'),
+                formatImageName: '{tag}-{logName}-{width}x{height}',
+                screenshotPath: join(process.cwd(), 'screenshots/tmp/'),
+                savePerInstance: true,
+                autoSaveBaseline: true,
+                blockOutStatusBar: true,
+                blockOutToolBar: true,
+            }],
+        ...setting.services
+    ],
     framework: 'mocha',
     reporters: ['spec', ['allure', {
         outputDir: 'allure-results',
@@ -119,7 +137,9 @@ export const config: WebdriverIO.Config = {
         browser.helper = {
             AddTextInField: AddTextInField,
             AllureStep: AllureStep,
-            ClickElement: ClickElement
+            ClickElement: ClickElement,
+            CheckText: CheckText,
+            GetKeyCode: GetKeyCode
         }
     },
     /**

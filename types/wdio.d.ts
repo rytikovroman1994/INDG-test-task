@@ -4,7 +4,6 @@ interface IAddTextInField {
     type: 'value' | 'text',
     needCheckTest?: boolean
 }
-
 interface IOption {
     button?: "left" | "middle" | "right",
     x?: number,
@@ -16,6 +15,11 @@ interface IClickElement {
     option?: IOption,
     errorText?: string,
     log?: boolean
+}
+interface ICheckText {
+    element: WebdriverIO.Element,
+    text: string,
+    type: 'value' | 'text',
 }
 
 declare namespace WebdriverIO {
@@ -29,7 +33,11 @@ declare namespace WebdriverIO {
         helper: {
             AddTextInField: ({ element, text, needCheckTest }: IAddTextInField) => Promise<void>;
             AllureStep: (name: string, callback: () => Promise<void>) => Promise<void>,
-            ClickElement: ({ element, option, errorText, log }: IClickElement) => Promise<void>
+            ClickElement: ({ element, option, errorText, log }: IClickElement) => Promise<void>,
+            CheckText: ({ element, text, type }: ICheckText) => Promise<void>
+            GetKeyCode: (key: any) => string; 
         }
 	}
 }
+
+declare module 'wdio-image-comparison-service';
