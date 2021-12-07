@@ -30,7 +30,6 @@ declare namespace WebdriverIO {
 	//   }
 
 	interface Browser {
-        // Temporary solution due to version conflict
         helper: {
             AddTextInField: ({ element, text, needCheckTest }: IAddTextInField) => Promise<void>;
             AllureStep: (name: string, callback: () => Promise<void>) => Promise<void>,
