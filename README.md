@@ -107,5 +107,6 @@ Result:
 > npm run test -- --suite pageLogin - Running a test suite
 
 ## Running report 
+Don't forget to install command line - npm i allure-commandline
 
 > npm run allure - Generating and running the allure report
