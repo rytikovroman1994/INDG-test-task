@@ -71,7 +71,7 @@ To run the tests, the main configuration file wdio.main.conf.ts and the addition
 ##### Config Setting
 
 In .env file
-- MODE=browserstack
+- MODE=docker
 - BASE_URL={your host}
 
 In wdio.docker.conf.ts
